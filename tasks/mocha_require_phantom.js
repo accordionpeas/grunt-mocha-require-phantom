@@ -169,9 +169,17 @@ module.exports = function(grunt) {
 
 		function copyFiles(){
 			var html = fs.readFileSync(__dirname + '/../lib/index.html', 'utf8'),
+				mochaJS = fs.readFileSync(__dirname + '/../node_modules/mocha/mocha.js', 'utf8'),
+				mochaCSS = fs.readFileSync(__dirname + '/../node_modules/mocha/mocha.css', 'utf8'),
 				bridge = fs.readFileSync(__dirname + '/../lib/bridge.js', 'utf8');
 
 			grunt.file.write(tempDirectory + '/index.html', html, {
+				encoding: 'utf8'
+			});
+			grunt.file.write(tempDirectory + '/mocha.css', mochaCSS, {
+				encoding: 'utf8'
+			});
+			grunt.file.write(tempDirectory + '/mocha.js', mochaJS, {
 				encoding: 'utf8'
 			});
 			grunt.file.write(tempDirectory + '/bridge.js', bridge, {
