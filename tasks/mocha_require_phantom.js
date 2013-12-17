@@ -188,10 +188,12 @@ module.exports = function(grunt) {
 		}
 
 		if(files.length){
-			copyFiles();
-			bindPhantomListeners();
 			launchServer();
-			spawn();
+			if(!options.keepAlive){
+				copyFiles();
+				bindPhantomListeners();
+				spawn();
+			}
 		}
 		else{
 			//no files to test.
