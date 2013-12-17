@@ -151,4 +151,4 @@ The main purpose of this plugin is to provide automated testing via phantomJS. H
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-* 2013-12-07  v0.1.0  Initial release.
+* 2013-12-17  v0.1.0  Initial release.
