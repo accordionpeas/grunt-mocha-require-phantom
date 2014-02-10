@@ -51,11 +51,13 @@ module.exports = function(grunt) {
 
 			server.get('*', function(req, res){
 				var url = req.url.substr(1);
-				copyFiles();
-				writeBootstrap(url);
-				res.end(grunt.file.read(tempDirectory + '/index.html', {
-					encoding: 'utf8'
-				}));
+				if(url.indexOf('.') === -1){
+					copyFiles();
+					writeBootstrap(url);
+					res.end(grunt.file.read(tempDirectory + '/index.html', {
+						encoding: 'utf8'
+					}));
+				}
 			});
 
 			server.listen(options.port);
@@ -70,7 +72,7 @@ module.exports = function(grunt) {
 		}
 
 		function spawn(){
-			var file = files[count].replace(basePath + '/', '');
+			var file = files[count];
 
 			grunt.log.writeln('\n\nTesting: ' + file);
 
