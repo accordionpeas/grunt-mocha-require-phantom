@@ -34,6 +34,7 @@ module.exports = function(grunt) {
                 main: 'test-bootstrap',
                 requireLib: 'libs/require.js',
                 files: ['mocha-tests/**/*.js'],
+				//keepAlive: true
             },
 
             target: {

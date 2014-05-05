@@ -1,7 +1,9 @@
 require.config({
 	paths: {
 		chai: '/node_modules/chai/chai'
-	}
+	},
+	
+	baseUrl: '/'
 });
 
 mocha.setup({
