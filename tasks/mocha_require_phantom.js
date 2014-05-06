@@ -22,7 +22,8 @@ module.exports = function(grunt) {
 			info: 'green',
 			data: 'grey',
 			error: 'red',
-			warn: 'yellow'
+			warn: 'yellow',
+			log: 'cyan'
 		});
 
 		var options = this.options({
@@ -138,7 +139,7 @@ module.exports = function(grunt) {
 			});
 
 			phantomjs.on('log', function(msg){
-				console.log(msg);
+				console.log(msg.log);
 			});
 			
 			phantomjs.on('error', function(msg){
