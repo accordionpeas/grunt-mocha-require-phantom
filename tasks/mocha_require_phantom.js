@@ -119,8 +119,7 @@ module.exports = function(grunt) {
 				}
 				else if(evt === 'fail'){
 					writeIndented(msg.title.error, suiteLevel);
-					writeIndented(('expected: ' + msg.err.actual).warn, suiteLevel);
-					writeIndented(('actual: ' + msg.err.expected).warn, suiteLevel);
+					writeIndented(msg.err.message.warn, suiteLevel);
 					errorCount++;
 				}
 				else if(evt === 'pass'){
@@ -205,3 +204,4 @@ module.exports = function(grunt) {
 	});
 
 };
+
