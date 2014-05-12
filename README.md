@@ -148,7 +148,8 @@ The main purpose of this plugin is to provide automated testing via phantomJS. H
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release History
+## Release Histor
+* 2014-12-06  v0.2.2  Bumped version after merged pull request that fixes issues with passing console.log statements through to command line.
 * 2014-05-06  v0.2.1  Bumped version after merged pull request that uses Chai's built in expect messages. Changed console.log output to be comma-separated on one line.
 * 2014-05-06  v0.2.0  console.log statements now make it through from phantomJS to command line.
 * 2014-05-05  v0.1.5  Amended docs.
