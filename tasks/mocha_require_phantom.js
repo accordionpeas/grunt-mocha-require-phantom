@@ -36,11 +36,23 @@ module.exports = function(grunt) {
 			}),
 			tempDirectory = 'tmp',
 			done = this.async(),
-			files = grunt.file.expand(options.base + '/' + options.files),
+			files = [],
 			count = 0,
 			errorCount = 0,
 			passCount = 0,
 			suiteLevel = 0;
+
+		var cmdOptFiles = grunt.option('files');
+
+		if(cmdOptFiles){
+			cmdOptFiles = cmdOptFiles.split(',');
+			for(var i=0; i<cmdOptFiles.length; i++){
+				files.push(options.base + '/' + cmdOptFiles[i]);
+			}
+		}
+		else{
+			files = grunt.file.expand(options.base + '/' + options.files);
+		}
 
 		var basePath = options.base,
 			main = basePath + '/' + options.main,

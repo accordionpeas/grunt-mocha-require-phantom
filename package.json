@@ -1,7 +1,7 @@
 {
 	"name": "grunt-mocha-require-phantom",
 	"description": "Grunt plugin for testing requireJS code using mocha in phantomJS and regular browsers",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"homepage": "https://github.com/accordionpeas/grunt-mocha-require-phantom",
 	"author": {
 		"name": "Mike Nelson",

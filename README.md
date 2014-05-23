@@ -96,7 +96,14 @@ mocha.setup({
 });
 ```
 
-#### Test file path name
+### Command line Options
+
+#### files
+
+Comma-separated list of files to test relative to the "base" option. If this option is passed in then the list of files will take precedence over the files passed in via the GruntFile.js.
+
+
+### Test file path name
 Within your bootstrap file you will need to use requireJS to load your unit tests and execute Mocha. To do this a global var named _testPathname_ is made available and should be used like so:
 
 ```js
@@ -148,7 +155,8 @@ The main purpose of this plugin is to provide automated testing via phantomJS. H
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release Histor
+## Release History
+* 2014-12-06  v0.3.0  Specific test files can now be passed in via command line options.
 * 2014-12-06  v0.2.2  Bumped version after merged pull request that fixes issues with passing console.log statements through to command line.
 * 2014-05-06  v0.2.1  Bumped version after merged pull request that uses Chai's built in expect messages. Changed console.log output to be comma-separated on one line.
 * 2014-05-06  v0.2.0  console.log statements now make it through from phantomJS to command line.
