@@ -57,14 +57,17 @@ module.exports = function(grunt) {
 		var basePath = options.base,
 			main = basePath + '/' + options.main,
 			requireLib = basePath + '/' + options.requireLib,
-			scriptRef = '<scr'+'ipt data-main="/' + main + '" src="/' + requireLib + '"></scr'+'ipt>';
+			//Adding urlArgs config for filtering out all the requirejs requests from other requests relative to /-path.
+			scriptRef = '<scr'+'ipt data-main="/' + main + '" src="/' + requireLib + '">require.config({urlArgs: "mocha=test"});</scr'+'ipt>';
+
 
 		function launchServer(){
 			server.use(express.static(path.resolve('.')));
 
 			server.get('*', function(req, res){
 				var url = req.url.substr(1);
-				if(url.indexOf('.') === -1){
+				//Check if the urlArgs added in config is found in url before writing bootstrap.
+				if(url.indexOf('.') === -1 && url.indexOf("mocha=test") > 0){
 					copyFiles();
 					writeBootstrap(url);
 					res.end(grunt.file.read(tempDirectory + '/index.html', {
