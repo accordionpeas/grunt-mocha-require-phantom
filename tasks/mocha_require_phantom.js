@@ -63,9 +63,10 @@ module.exports = function(grunt) {
 		function launchServer(){
 			server.use(express.static(path.resolve('.')));
 
-			server.get('*', function(req, res){
+			var regex = new RegExp('/' + basePath + '/[.]*');
+
+			server.get(regex, function(req, res){
 				var url = req.url.substr(1);
-				//Check if the urlArgs added in config is found in url before writing bootstrap.
 				if(url.indexOf('.') === -1){
 					copyFiles();
 					writeBootstrap(url);

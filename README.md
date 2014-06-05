@@ -156,6 +156,7 @@ The main purpose of this plugin is to provide automated testing via phantomJS. H
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-06-05  v0.3.1  Only serve test runner page if request begins with base option.
 * 2014-05-23  v0.3.0  Specific test files can now be passed in via command line options.
 * 2014-05-12  v0.2.2  Bumped version after merged pull request that fixes issues with passing console.log statements through to command line.
 * 2014-05-12  v0.2.0  console.log statements now make it through from phantomJS to command line.

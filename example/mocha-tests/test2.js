@@ -4,12 +4,21 @@ define([
 
 	var expect = chai.expect;
 
-	describe('test suite 2', function(){
+	describe('async suite', function(){
 
-		it('should work', function(){
+		it('should work', function(done){
 
-			expect(true).to.equal(true);
+			var xhr = new XMLHttpRequest();
 
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState === 4 && xhr.status === 200){
+					expect(true).to.equal(true);
+					done();
+				}
+			}
+
+			xhr.open('GET', '/package.json', true);
+			xhr.send();
 		});
 
 	});
