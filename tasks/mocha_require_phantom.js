@@ -33,6 +33,7 @@ module.exports = function(grunt) {
                 files: [],
 				port: 3000,
 				keepAlive: false,
+				mainAttr: 'data-main'
 			}),
 			tempDirectory = 'tmp',
 			done = this.async(),
@@ -57,7 +58,7 @@ module.exports = function(grunt) {
 		var basePath = options.base,
 			main = basePath + '/' + options.main,
 			requireLib = basePath + '/' + options.requireLib,
-			scriptRef = '<scr'+'ipt data-main="/' + main + '" src="/' + requireLib + '"></scr'+'ipt>';
+			scriptRef = '<scr'+'ipt ' + options.mainAttr + '="/' + main + '" src="/' + requireLib + '"></scr'+'ipt>';
 
 
 		function launchServer(){
@@ -214,6 +215,7 @@ module.exports = function(grunt) {
 		}
 		else{
 			//no files to test.
+			grunt.fail.warn('no test files were found.');
 			done();
 		}
 	});

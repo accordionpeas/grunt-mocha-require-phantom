@@ -1,7 +1,7 @@
 {
 	"name": "grunt-mocha-require-phantom",
 	"description": "Grunt plugin for testing requireJS code using mocha in phantomJS and regular browsers",
-	"version": "0.3.1",
+	"version": "0.4.0",
 	"homepage": "https://github.com/accordionpeas/grunt-mocha-require-phantom",
 	"author": {
 		"name": "Mike Nelson",
@@ -25,11 +25,11 @@
 		"grunt": "~0.4.2"
 	},
 	"dependencies": {
-		"grunt-lib-phantomjs": "~0.4.0",
-		"mocha": "~1.12.0",
-		"chai": "~1.8.1",
-		"express": "~3.4.7",
-		"colors": "~0.6.2"
+		"grunt-lib-phantomjs": "0.6.x",
+		"mocha": "1.12.x",
+		"chai": "1.8.x",
+		"express": "4.5.x",
+		"colors": "0.6.x"
 	},
 	"keywords": [
 		"gruntplugin", "grunt", "unit test", "test", "require", "requireJS", "mocha", "phantomJS", "phantom"

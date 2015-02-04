@@ -57,6 +57,12 @@ Default value: `'test-bootstrap'`
 
 The path to your test bootstrap file that will be specified in requireJS's _data-main_ attribute.
 
+#### options.mainAttr
+Type: `String`
+Default value: `data-main`
+
+The attribute appended to the script tag that specifies the module defined in _options.main_.
+
 #### options.requireLib
 Type: `String`
 Default value: `'require.js'`
@@ -81,6 +87,12 @@ Default value: `false`
 
 Setting this option to true will keep the server alive and the task will never complete. The purpose of this is to allow you to debug your unit tests within a browser environment if necessary (sometimes you just need a browser's dev tools).
 
+### Command line Options
+
+#### files
+
+Comma-separated list of files to test relative to the "base" option. If this option is passed in then the list of files will take precedence over the files passed in via the GruntFile.js.
+
 ### Test bootstrap file
 This file is used to kick off your test code. You should do any requireJS and Mocha configuration in this file. e.g.
 
@@ -95,13 +107,6 @@ mocha.setup({
     ui: 'bdd'
 });
 ```
-
-### Command line Options
-
-#### files
-
-Comma-separated list of files to test relative to the "base" option. If this option is passed in then the list of files will take precedence over the files passed in via the GruntFile.js.
-
 
 ### Test file path name
 Within your bootstrap file you will need to use requireJS to load your unit tests and execute Mocha. To do this a global var named _testPathname_ is made available and should be used like so:
@@ -156,6 +161,7 @@ The main purpose of this plugin is to provide automated testing via phantomJS. H
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-06-05  v0.4.0  Main attribute can be specified as an option.
 * 2014-06-05  v0.3.1  Only serve test runner page if request begins with base option.
 * 2014-05-23  v0.3.0  Specific test files can now be passed in via command line options.
 * 2014-05-12  v0.2.2  Bumped version after merged pull request that fixes issues with passing console.log statements through to command line.
