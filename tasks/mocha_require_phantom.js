@@ -33,7 +33,8 @@ module.exports = function(grunt) {
                 files: [],
 				port: 3000,
 				keepAlive: false,
-				mainAttr: 'data-main'
+				mainAttr: 'data-main',
+				router: null
 			}),
 			tempDirectory = 'tmp',
 			done = this.async(),
@@ -53,6 +54,10 @@ module.exports = function(grunt) {
 		}
 		else{
 			files = grunt.file.expand(options.base + '/' + options.files);
+		}
+
+		if(options.router){
+			options.router(server);
 		}
 
 		var basePath = options.base,

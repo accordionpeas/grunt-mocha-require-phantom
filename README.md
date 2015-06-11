@@ -79,7 +79,11 @@ An array of paths to your test files.
 Type: `Number`
 Default value: `3000`
 
-The port that the server will be run on.
+#### options.router
+Type: `Function`
+Default value: `null`
+
+A function that takes the instace of Express as a parameter. This can be used to define routes etc if your tests require back-end interaction. See example for more info.
 
 #### options.keepAlive
 Type: `Boolean`
@@ -161,6 +165,7 @@ The main purpose of this plugin is to provide automated testing via phantomJS. H
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-06-05  v0.5.0  Router can now be passed in as a function to provide back-end routes for testing.
 * 2014-06-05  v0.4.0  Main attribute can be specified as an option.
 * 2014-06-05  v0.3.1  Only serve test runner page if request begins with base option.
 * 2014-05-23  v0.3.0  Specific test files can now be passed in via command line options.

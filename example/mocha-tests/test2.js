@@ -12,12 +12,12 @@ define([
 
 			xhr.onreadystatechange = function(){
 				if(xhr.readyState === 4 && xhr.status === 200){
-					expect(true).to.equal(true);
+					expect(xhr.responseText).to.equal('test');
 					done();
 				}
 			}
 
-			xhr.open('GET', '/package.json', true);
+			xhr.open('GET', '/test-route', true);
 			xhr.send();
 		});
 
