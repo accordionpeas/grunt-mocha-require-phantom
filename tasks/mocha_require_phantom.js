@@ -56,29 +56,27 @@ module.exports = function(grunt) {
 			files = grunt.file.expand(options.base + '/' + options.files);
 		}
 
-		if(options.router){
-			options.router(server);
-		}
-
 		var basePath = options.base,
 			main = basePath + '/' + options.main,
 			requireLib = basePath + '/' + options.requireLib,
 			scriptRef = '<scr'+'ipt ' + options.mainAttr + '="/' + main + '" src="/' + requireLib + '"></scr'+'ipt>';
-
 
 		function launchServer(){
 			server.use(express.static(path.resolve('.')));
 
 			var regex = new RegExp('/' + basePath + '/[.]*');
 
-			server.get(regex, function(req, res){
+			server.get(regex, function(req, res, next){
 				var url = req.url.substr(1);
-				if(url.indexOf('.') === -1){
+				if(url.indexOf('.') === -1 && grunt.file.exists(url + '.js')){
 					copyFiles();
 					writeBootstrap(url);
 					res.end(grunt.file.read(tempDirectory + '/index.html', {
 						encoding: 'utf8'
 					}));
+				}
+				else{
+					next();
 				}
 			});
 
@@ -212,6 +210,10 @@ module.exports = function(grunt) {
 
 		if(files.length){
 			launchServer();
+			if(options.router){
+				options.router(server);
+			}
+			
 			if(!options.keepAlive){
 				copyFiles();
 				bindPhantomListeners();

@@ -165,8 +165,9 @@ The main purpose of this plugin is to provide automated testing via phantomJS. H
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-* 2014-06-05  v0.5.0  Router can now be passed in as a function to provide back-end routes for testing.
-* 2014-06-05  v0.4.0  Main attribute can be specified as an option.
+* 2015-06-16  v0.5.1  Allow other routes to be matched if test file not found.
+* 2015-06-11  v0.5.0  Router can now be passed in as a function to provide back-end routes for testing.
+* 2015-02-04  v0.4.0  Main attribute can be specified as an option.
 * 2014-06-05  v0.3.1  Only serve test runner page if request begins with base option.
 * 2014-05-23  v0.3.0  Specific test files can now be passed in via command line options.
 * 2014-05-12  v0.2.2  Bumped version after merged pull request that fixes issues with passing console.log statements through to command line.
