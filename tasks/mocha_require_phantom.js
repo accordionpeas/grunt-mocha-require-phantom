@@ -42,7 +42,9 @@ module.exports = function(grunt) {
 			count = 0,
 			errorCount = 0,
 			passCount = 0,
-			suiteLevel = 0;
+			suiteLevel = 0,
+			errorFiles = {},
+			currentFile;
 
 		var cmdOptFiles = grunt.option('files');
 
@@ -60,6 +62,7 @@ module.exports = function(grunt) {
 			main = basePath + '/' + options.main,
 			requireLib = basePath + '/' + options.requireLib,
 			scriptRef = '<scr'+'ipt ' + options.mainAttr + '="/' + main + '" src="/' + requireLib + '"></scr'+'ipt>';
+
 
 		function launchServer(){
 			server.use(express.static(path.resolve('.')));
@@ -93,6 +96,7 @@ module.exports = function(grunt) {
 
 		function spawn(){
 			var file = files[count];
+			currentFile = file;
 
 			grunt.log.writeln('\n\nTesting: ' + file);
 
@@ -105,6 +109,12 @@ module.exports = function(grunt) {
 
 					if(count === files.length){
 						if(errorCount > 0){
+							grunt.log.writeln('The following files contain errors: '.warn);
+
+							for(var i in errorFiles){
+								grunt.log.writeln(i.warn);
+							}
+
 							grunt.fail.warn(errorCount + ' tests failed');
 						}
 						clean();
@@ -139,6 +149,7 @@ module.exports = function(grunt) {
 				else if(evt === 'fail'){
 					writeIndented(msg.title.error, suiteLevel);
 					writeIndented(msg.err.message.warn, suiteLevel);
+					errorFiles[currentFile] = true;
 					errorCount++;
 				}
 				else if(evt === 'pass'){
@@ -213,7 +224,6 @@ module.exports = function(grunt) {
 			if(options.router){
 				options.router(server);
 			}
-			
 			if(!options.keepAlive){
 				copyFiles();
 				bindPhantomListeners();
