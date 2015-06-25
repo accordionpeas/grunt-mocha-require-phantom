@@ -232,7 +232,7 @@ module.exports = function(grunt) {
 		}
 		else{
 			//no files to test.
-			grunt.fail.warn('no test files were found.');
+			grunt.log.writeln('No test files were found.'.warn);
 			done();
 		}
 	});
