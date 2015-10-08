@@ -170,7 +170,7 @@ module.exports = function(grunt) {
 			phantomjs.on('log', function(msg){
 				console.log(msg.log);
 			});
-			
+
 			phantomjs.on('error', function(msg){
 				grunt.fail.warn(msg);
 			});
@@ -200,10 +200,22 @@ module.exports = function(grunt) {
 		}
 
 		function copyFiles(){
-			var html = fs.readFileSync(__dirname + '/../lib/index.html', 'utf8'),
-				mochaJS = fs.readFileSync(__dirname + '/../node_modules/mocha/mocha.js', 'utf8'),
-				mochaCSS = fs.readFileSync(__dirname + '/../node_modules/mocha/mocha.css', 'utf8'),
+			var html, mochaJS, mochaCSS, bridge;
+
+			// Try NPM < 3 paths
+			try {
+				html = fs.readFileSync(__dirname + '/../lib/index.html', 'utf8');
+				mochaJS = fs.readFileSync(__dirname + '/../node_modules/mocha/mocha.js', 'utf8');
+				mochaCSS = fs.readFileSync(__dirname + '/../node_modules/mocha/mocha.css', 'utf8');
 				bridge = fs.readFileSync(__dirname + '/../lib/bridge.js', 'utf8');
+			// If there's an exception, use NPM 3 flattened paths
+			} catch (e) {
+				html = fs.readFileSync(__dirname + '/../lib/index.html', 'utf8');
+				mochaJS = fs.readFileSync(__dirname + '/../../mocha/mocha.js', 'utf8');
+				mochaCSS = fs.readFileSync(__dirname + '/../../mocha/mocha.css', 'utf8');
+				bridge = fs.readFileSync(__dirname + '/../lib/bridge.js', 'utf8');
+			}
+
 
 			grunt.file.write(tempDirectory + '/index.html', html, {
 				encoding: 'utf8'
