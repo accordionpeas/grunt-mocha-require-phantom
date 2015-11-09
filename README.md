@@ -165,6 +165,7 @@ The main purpose of this plugin is to provide automated testing via phantomJS. H
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2015-11-09  v0.7.0  Bumped grunt-lib-phantomjs to v0.7.x.
 * 2015-10-08  v0.6.2  Support for NPM 3 flattened node_modules.
 * 2015-06-25  v0.6.1  Don't fail the task if no test files are found.
 * 2015-06-17  v0.6.0  List all error files at the end of task.
