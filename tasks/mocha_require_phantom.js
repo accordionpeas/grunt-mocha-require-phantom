@@ -30,6 +30,7 @@ module.exports = function(grunt) {
 				base: '',
 				main: 'test-bootstrap',
 				requireLib: 'require.js',
+				includes: [],
                 files: [],
 				port: 3000,
 				keepAlive: false,
@@ -61,8 +62,11 @@ module.exports = function(grunt) {
 		var basePath = options.base,
 			main = basePath + '/' + options.main,
 			requireLib = basePath + '/' + options.requireLib,
-			scriptRef = '<scr'+'ipt ' + options.mainAttr + '="/' + main + '" src="/' + requireLib + '"></scr'+'ipt>';
+			scriptRef = 'document.write(\'<scr'+'ipt ' + options.mainAttr + '="/' + main + '" src="/' + requireLib + '"></scr'+'ipt>\');\n';
 
+		options.includes.forEach(function(include){
+			scriptRef += 'document.write(\'<scr'+'ipt src="/' + basePath + '/' + include + '"></scr'+'ipt>\');\n';
+		});
 
 		function launchServer(){
 			server.use(express.static(path.resolve('.')));
@@ -89,7 +93,7 @@ module.exports = function(grunt) {
 		function writeBootstrap(file){
 			var scriptInc = 'var testPathname = "' + file.replace('.js', '') + '";';
 
-			grunt.file.write(tempDirectory + '/include.js', scriptInc + '\ndocument.write(\'' + scriptRef + '\');', {
+			grunt.file.write(tempDirectory + '/include.js', scriptInc + '\n' + scriptRef, {
 				encoding: 'utf8'
 			});
 		}
@@ -250,4 +254,3 @@ module.exports = function(grunt) {
 	});
 
 };
-

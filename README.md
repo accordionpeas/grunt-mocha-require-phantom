@@ -69,6 +69,12 @@ Default value: `'require.js'`
 
 The path to the requireJS library within your application.
 
+#### options.includes
+Type: `Array`
+Default value: `[]`
+
+An array of additional scripts to include.
+
 #### options.files
 Type: `Array`
 Default value: `[]`
@@ -127,7 +133,7 @@ require([
   else{
     mocha.run();
   }
-  
+
 });
 ```
 
@@ -165,6 +171,7 @@ The main purpose of this plugin is to provide automated testing via phantomJS. H
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2016-06-02  v0.8.0  Fixed bug where falsey values were not logged to the console. Provide way to include additional scripts on the page.
 * 2015-11-17  v0.7.1  Only hijack console.log when running in PhantomJS.
 * 2015-11-09  v0.7.0  Bumped grunt-lib-phantomjs to v0.7.x.
 * 2015-10-08  v0.6.2  Support for NPM 3 flattened node_modules.
